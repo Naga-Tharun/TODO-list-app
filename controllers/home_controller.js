@@ -1,7 +1,17 @@
-module.exports.home = function(req, res){
-    // return res.end('<h1> Express is up for TODO list app');
+const Task = require("../models/task");
 
-    return res.render('home', {
-        title: "TODO list"
+// redirects to home view
+module.exports.home = function(req, res){
+
+    Task.find({}, function(err, tasks){
+        if(err){
+            console.log('Error in fetching tasks from db');
+            return;
+        }
+
+        return res.render('home', {
+            title: "TODO list",
+            tasks_list: tasks
+        });
     });
 };
