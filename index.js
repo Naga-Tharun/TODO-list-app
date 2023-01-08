@@ -11,6 +11,8 @@ app.use('/', require('./routes'));
 app.set('view engine', 'ejs');
 app.set('views', './views');
 
+// for acceessing static files in assets folder
+app.use(express.static('assets'));
 
 // setup app.listen for checking if server is running without any error
 app.listen(port, function(err){
