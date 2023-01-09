@@ -56,7 +56,10 @@
                         <li class="task">
                             <div class="details">
                                 <div id="description-box">
-                                    <input type="checkbox" id="task-check">
+                                    <a href="/mark-task/?id=<%= i._id %>" id="task-check" data-value="<%= i.check %>">
+                                        _
+                                    </a>
+                                 
                                     <p id="details-description"> <%= i.description %> </p>
                                 </div>
                                     
