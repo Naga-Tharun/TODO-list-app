@@ -6,7 +6,7 @@ body{
 }
 
 #main-space{
-    background-color: rgb(247, 246, 246);
+    background-color: white;
     width: 40%;
     height: fit-content;
     min-width: 600px;
