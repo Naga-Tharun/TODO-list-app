@@ -9,8 +9,11 @@ const taskSchema = new mongoose.Schema({
         type: String,
     },
     duedate: {
-        type: Date,
-        required: true
+        type: String,
+    },
+    check: {
+        type: Boolean,
+        default: false
     }
 });
 

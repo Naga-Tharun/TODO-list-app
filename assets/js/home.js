@@ -1,1 +1,4 @@
-console.log("My script is loaded");
+// for fetching checked tasks for deletion
+var TodoListApp = (function() {
+    
+})();

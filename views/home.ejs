@@ -11,45 +11,58 @@
 
     <body>
 
-        <div>
-            <h1> My TODO List </h1>
+        <div id="main-space">
+            <h1 id="page-heading"> My TODO List </h1>
 
             <form id="create-task-form" action="/create-task" method="POST">
-                <label for="task-description"> DESCRIBE THE TASK: </label>
-                <input type="text" name="description" placeholder="Enter the task" id="task-description" required>
+                <div id="description-input">
+                    <label for="task-description"> DESCRIBE THE TASK: </label>
+                    <input type="text" name="description" placeholder="Enter the task" id="task-description" required>
+                </div>
+
+                <div id="category-input">
+                    <label for="task-category"> CATEGORY: </label>
+                    <select name="category" id="task-category">   
+                        <option value=""> Choose a Description </option>
+                        <option value="Personal"> Personal </option>
+                        <option value="Work"> Work </option>
+                        <option value="School"> School </option>
+                        <option value="Cleaning"> Cleaning </option>
+                        <option value="Other"> Other </option>
+                    </select>
+                </div>
                 
-                <label for="task-category"> CATEGORY: </label>
-                <select name="category" id="task-category">   
-                    <option value=""> Choose a Description </option>
-                    <option value="Personal"> Personal </option>
-                    <option value="Work"> Work </option>
-                    <option value="School"> School </option>
-                    <option value="Cleaning"> Cleaning </option>
-                    <option value="Other"> Other </option>
-                </select>
-
-                <label for="task-duedate"> DUE DATE </label>
-                <input type="date" name="duedate" id="task-duedate">
-
+                <div id="duedate-input">
+                    <label for="task-duedate"> DUE DATE: </label>
+                    <input type="date" name="duedate" id="task-duedate">
+                </div>
+                    
                 <button type="submit" id="add-button"> <i class="fa-solid fa-plus"></i> ADD TASK </button>
+                
+                
+                <div class="delete-button">
+                    <a href="/delete-tasks">
+                        <i class="fa-solid fa-trash-can"></i> DELETE TASKS
+                    </a>
+
+                    <p> *select the tasks to be deleted </p>
+                </div>
+                
             </form>
-
-            <div class="delete-button">
-                <a href="">
-                    <i class="fa-solid fa-trash-can"></i> DELETE TASKS
-                </a>
-            </div>
-
+            
             <div id="tasks-container">
                 <ul>
                     <% for (let i of tasks_list) { %>
                         <li class="task">
                             <div class="details">
-                                <input type="checkbox" id="task-check">
-                                <p id="details-description"> <%= i.description %> </p>
-                                <p id="details-duedate"> <i class="fa-regular fa-calendar-days"></i> <%= i.duedate %> </p>
-                                <div id="categroy-box">
-                                    <p id="details-category"> <%= i.category %> </p>
+                                <div id="description-box">
+                                    <input type="checkbox" id="task-check">
+                                    <p id="details-description"> <%= i.description %> </p>
+                                </div>
+                                    
+                                <div id="duedate-category-box">
+                                    <p id="details-duedate"> <i class="fa-regular fa-calendar-days"></i> <%= i.duedate %> </p>
+                                    <p id="details-category" data-value="<%= i.category %>"> <%= i.category %> </p>
                                 </div>
                             </div>
                         </li>

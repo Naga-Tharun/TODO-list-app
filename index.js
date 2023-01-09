@@ -1,3 +1,7 @@
+// npm install express
+// npm install ejs
+// npm install mongoose
+
 // including express
 const express = require('express');
 const app = express();
@@ -23,11 +27,16 @@ app.use(express.static('assets'));
 
 // creating a post reequest for adding a task
 app.post('/create-task', function(req, res){
-    console.log(req.body.category);
+    // if deadline not provided then set No dedline
+    if(req.body.duedate == ''){
+        req.body.duedate = "No Deadline";
+    }
+
     Task.create({
         description: req.body.description,
         duedate: req.body.duedate,
-        category: req.body.category
+        category: req.body.category,
+        check: req.body.check
     }, function(err, newTask){
         if(err){
             console.log('Error in creating a task!');
@@ -41,7 +50,9 @@ app.post('/create-task', function(req, res){
 
 // deleting selected tasks
 app.get('/delete-tasks', function(req, res){
-    return res.render('<h1> Delete clicked </h1>');
+    // return res.end('<h1> Delete clicked </h1>');
+
+
 });
 
 // setup app.listen for checking if server is running without any error
